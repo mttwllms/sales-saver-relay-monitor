@@ -34,7 +34,7 @@ export const handler = schedule('* * * * *', async (event: any) => {
     const response = await axios.get(`${ENDPOINT}`, { timeout: TIMEOUT_LIMIT });
     const responseTimestamp = new Date().getTime() - requestTimestamp.getTime();
     const body = `${ENDPOINT}: ${response.status} at ${requestTimestamp} in ${responseTimestamp}ms`;
-    await sendEmail("Sales Saver Relay is working", body);
+    // await sendEmail("Sales Saver Relay is working", body);
     console.log(body);
     return { statusCode: response.status, body: body };
   } catch (error) {
