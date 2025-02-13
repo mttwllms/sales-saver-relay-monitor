@@ -8,7 +8,7 @@ dotenv.config();
 const { CRON, MAILER_TO, MAILER_FROM, MAILER_PASS, ENDPOINT, TIMEOUT_LIMIT: timeoutLimit } = process.env;
 const TIMEOUT_LIMIT = Number(timeoutLimit);
 
-export const handler = schedule(`${CRON}`, async (event: any) => {
+export const handler = schedule('* * * * *', async (event: any) => {
   const requestTimestamp = new Date();
 
   async function sendEmail(subject, body) {
