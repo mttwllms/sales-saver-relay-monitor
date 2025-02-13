@@ -12,6 +12,7 @@ export const handler = schedule('* * * * *', async (event: any) => {
     const response = await axios.get('https://rio-dev.sportsbasement.com/ss', { timeout: 5000 });
     const responseTimestamp = requestTimestamp.getTime() - new Date().getTime();
     const body = `Sales Saver Relay status: ${response.status} at ${requestTimestamp} in ${responseTimestamp}ms`;
+    console.log(body);
     return { statusCode: response.status, body: body };
   } catch (error) {
     // const subject = 'Sales Saver relay not responding';
@@ -19,7 +20,8 @@ export const handler = schedule('* * * * *', async (event: any) => {
     // await sendEmail(subject, body);
     const responseTimestamp = requestTimestamp.getTime() - new Date().getTime();
     const body = `Sales Saver Relay status: ${error.status} at ${requestTimestamp} in ${responseTimestamp}ms`;
-    return { statusCode: error.status, body: error.message };
+    console.log(body);
+    return { statusCode: error.status, body: body };
   }
 });
 
